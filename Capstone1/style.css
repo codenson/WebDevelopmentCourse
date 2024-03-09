@@ -1,0 +1,21 @@
+.backgrn {
+  background-image: url("./images/bl.jpg");
+}
+.backgroundImage {
+  background-image: url("./images/pexels-junior-teixeira-2047905.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.profilePic {
+  display: block;
+
+  margin-right: 10px;
+  margin-left: 20px;
+  height: 500px;
+}
+#name {
+  color: rgb(211, 173, 114);
+  margin-left: 30px;
+}

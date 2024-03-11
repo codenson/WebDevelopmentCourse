@@ -26,103 +26,123 @@
       href="https://fonts.googleapis.com/css2?family=Lexend+Tera:wght@100..900&display=swap"
       rel="stylesheet"
     />
+    <script>
+      function myFunction() {
+        let output = 0;
+        for (let i = 0; i < 100; i++) {
+          output += i;
+        }
+        document.getElementById("myButton").innerHTML = output + "";
+      }
+    </script>
   </head>
   <body>
-    <!--style="width: 100%; background-color: rgb(244, 239, 244)-->
-    <div>
-      <h1>Marouane Guerouji</h1>
-      <img class="profilePic" src="./images/me.JPG" alt="My Picture" />
+    <main class="grid-container">
+      <!--style="width: 100%; background-color: rgb(244, 239, 244)-->
+      <div>
+        <div>
+          <h1>Marouane Guerouji</h1>
+          <img class="profilePic" src="./images/me.JPG" alt="My Picture" />
+          <!---  <button class="myButton" onclick="myFunction()">
+        <h2>Summary:</h2>
+      </button>
+    -->
+        </div>
 
-      <h2>Summary:</h2>
+        <button id="myButton" class="myButton" onclick="myFunction()">
+          <h2>Summary:</h2>
+        </button>
 
-      <p>
-        Recent Computer Sceince graduate from Gmu whos has a passion for coding
-        and problem solving.
-      </p>
-      <hr />
-      <h2>Education:</h2>
-      <ul>
-        <li>
-          Bachelor of Scince, Computer Science, George Mason University (dec
-          2023)
-        </li>
-      </ul>
-      <hr />
-      <h2>Certifications:</h2>
-      <ul>
-        <li>AWS Certified Cloud Practitioner (CCP)</li>
-      </ul>
-      <hr />
-      <h2>Work Experience:</h2>
-      <ul>
-        <li>
-          <h3>Rideshare | 04/ 2016 – PRESENT.</h3>
-          <ul>
-            <li>
-              Managed operations as an independent contractor, achieving high
-              customer ratings across multiple platforms
-            </li>
-          </ul>
-        </li>
+        <p>
+          Recent Computer Sceince graduate from Gmu whos has a passion for
+          coding and problem solving.
+        </p>
+        <hr />
+        <h2>Education:</h2>
+        <ul>
+          <li>
+            Bachelor of Scince, Computer Science, George Mason University (dec
+            2023)
+          </li>
+        </ul>
+        <hr />
+        <h2>Certifications:</h2>
+        <ul>
+          <li>AWS Certified Cloud Practitioner (CCP)</li>
+        </ul>
+        <hr />
+        <h2>Work Experience:</h2>
+        <ul>
+          <li>
+            <h3>Rideshare | 04/ 2016 – PRESENT.</h3>
+            <ul>
+              <li>
+                Managed operations as an independent contractor, achieving high
+                customer ratings across multiple platforms
+              </li>
+            </ul>
+          </li>
 
-        <li>
-          <h3>
-            RESTAURANT MANAGER | BABALU LOUNGE TYSON'S CORNER | 04/ 2014 – 08
-            2016:
-          </h3>
-          <ul>
-            <li>
-              Oversaw reservations, promotions including actively engaging with
-              clients to sell VIP tables.
-            </li>
-          </ul>
-        </li>
-        <li>
-          <h3>
-            RESTAURANT MANAGER | PRINCE CAFÉ - WASHINGTON, DC | 03/ 2008 –
-            08/2013
-          </h3>
-          <ul>
-            <li>
-              Served customers and later promoted to management to oversee shift
-              operations.
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <hr />
-      <h3>Skills:</h3>
-      <ul>
-        <li><b>Programming Languages:</b> Java, C, python, Go, Assembly</li>
-        <li><b>Web Development:</b> Html, CSS, javascript</li>
-        <li>
-          <b>Software Development Methodologies:</b> Agile, ObjectOriented
-          Programming
-        </li>
-        <li><b>Operating Systems:</b> Windows, Unix, Linux</li>
-        <li>
-          <b>Development Tools:</b> Visual Studio, NetBeans, Eclipse, JetBrains
-        </li>
-        <li>
-          <b>Soft Skills:</b> Problem-Solving, Communication, Time Management
-        </li>
-        <li><b>Version Control:</b> Git, GitHub, GitLab</li>
-        <li><b>Issue Tracking:</b> Jira/Atlassian</li>
-        <li><b>Frameworks:</b> Java Maven, Java Swing</li>
-        <li><b>Database Management:</b> SQL, relational databases</li>
-        <li><b>Math & Physics Tools:</b> MATLAB</li>
+          <li>
+            <h3>
+              RESTAURANT MANAGER | BABALU LOUNGE TYSON'S CORNER | 04/ 2014 – 08
+              2016:
+            </h3>
+            <ul>
+              <li>
+                Oversaw reservations, promotions including actively engaging
+                with clients to sell VIP tables.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h3>
+              RESTAURANT MANAGER | PRINCE CAFÉ - WASHINGTON, DC | 03/ 2008 –
+              08/2013
+            </h3>
+            <ul>
+              <li>
+                Served customers and later promoted to management to oversee
+                shift operations.
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <hr />
+        <h3>Skills:</h3>
+        <ul>
+          <li><b>Programming Languages:</b> Java, C, python, Go, Assembly</li>
+          <li><b>Web Development:</b> Html, CSS, javascript</li>
+          <li>
+            <b>Software Development Methodologies:</b> Agile, ObjectOriented
+            Programming
+          </li>
+          <li><b>Operating Systems:</b> Windows, Unix, Linux</li>
+          <li>
+            <b>Development Tools:</b> Visual Studio, NetBeans, Eclipse,
+            JetBrains
+          </li>
+          <li>
+            <b>Soft Skills:</b> Problem-Solving, Communication, Time Management
+          </li>
+          <li><b>Version Control:</b> Git, GitHub, GitLab</li>
+          <li><b>Issue Tracking:</b> Jira/Atlassian</li>
+          <li><b>Frameworks:</b> Java Maven, Java Swing</li>
+          <li><b>Database Management:</b> SQL, relational databases</li>
+          <li><b>Math & Physics Tools:</b> MATLAB</li>
 
-        <li>
-          <b>Networking:</b> Computer Communications and Networking, secure
-          programming.
-        </li>
-      </ul>
+          <li>
+            <b>Networking:</b> Computer Communications and Networking, secure
+            programming.
+          </li>
+        </ul>
 
-      <hr />
-      <h3>Other:</h3>
-      <a href="./Contact.html">Contact Me</a>
-      <hr />
-    </div>
+        <hr />
+        <h3>Other:</h3>
+        <a href="./Contact.html">Contact Me</a>
+        <hr />
+      </div>
+    </main>
   </body>
   <footer>
     <p>© 2024 Guerouji</p>

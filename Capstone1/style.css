@@ -36,3 +36,38 @@ h1 {
   text-align: center;
   font-size: 2rem;
 }
+
+#myButton {
+  --main_color: #f4cf47;
+  --sub_color1: #f4e19c;
+  --sub_color2: #ff8108;
+  --base_color: #000;
+  --border_radius1: 60px 60px 40px 40px / 48px 48px 30px 30px;
+  --border_radius2: 70px 70px 40px 40px / 48px 48px 30px 30px;
+  --border_radius3: 40px 40px 40px 40px / 48px 48px 30px 30px;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 20px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  margin: 10px 10px;
+}
+.flex-container {
+  display: flex;
+  background-color: rgb(196, 210, 224);
+  width: 100%;
+}
+.flex-container > div {
+  background-color: #f1f1f1;
+  margin: 10px;
+  padding: 5px;
+  font-size: 30px;
+  margin-left: 100%;
+}

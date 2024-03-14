@@ -66,8 +66,62 @@ h1 {
 }
 .flex-container > div {
   background-color: #f1f1f1;
-  margin: 10px;
-  padding: 5px;
+
+  padding: 10px;
   font-size: 30px;
   margin-left: 100%;
+}
+.container1 {
+  display: flex;
+  background-color: rgb(240, 224, 224);
+  /* border: 10px solid black;*/
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  justify-content: space-between;
+}
+
+.color {
+  /*background-color: rgb(150, 184, 154);*/
+}
+
+.containerImag {
+  background-color: white;
+
+  /* border: 10px solid blue;*/
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+
+  background-image: url("./images/me.JPG");
+  width: auto; /* Example width for the flex container */
+  height: auto;
+  background-size: cover; /* Cover the entire area of the container */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat;
+}
+
+#imagesetting {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: scale-down;
+  border: 5px solid black;
+}
+.text {
+  border: 5px solid black;
+  flex: 1;
+  box-sizing: border-box;
+}
+.center {
+  text-align: center;
+}
+
+#button {
+  margin-left: 50%;
+}
+#zoom {
+  font-size: 14px;
 }

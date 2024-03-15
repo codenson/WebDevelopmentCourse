@@ -121,3 +121,12 @@ h1 {
 #zoom {
   font-size: 14px;
 }
+/*****************************************************************/
+@media (max-width: 650px) {
+  .container1 {
+    width: 80%;
+  }
+  html {
+    font-size: 5pt;
+  }
+}

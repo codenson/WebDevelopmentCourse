@@ -4,49 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=>, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./styleMobil.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Lexend+Tera:wght@100..900&display=swap"
       rel="stylesheet"
     />
-    <!--<script>
-      // Check if the screen width is less than 600 pixels
-      if (window.innerWidth < 600) {
-        // Redirect to a different HTML page
-        window.location.href = "./index2.html";
-      }
-    </script>
-  -->
-
-    <script>
-      // Function to load page content based on window size
-      function loadContent() {
-        var contentUrl = window.innerWidth < 600 ? "index2.html" : "index.html";
-
-        // Load content from the specified URL
-        fetch(contentUrl)
-          .then((response) => response.text())
-          .then((html) => {
-            // Replace the current page content with the loaded content
-            document.documentElement.innerHTML = html;
-          })
-          .catch((error) => console.error("Error loading content:", error));
-      }
-
-      // Initial load
-      loadContent();
-
-      // Listen for window resize event
-      window.addEventListener("resize", function () {
-        // Reload content when window is resized
-        loadContent();
-      });
-    </script>
   </head>
   <body class="color">
     <div class="container1">
+      <h1>Marouane Guerouji</h1>
       <!--left container-->
       <div class="containerImag">
         <img
@@ -55,12 +23,10 @@
           alt="Profile Photo of Marouane Guerouji"
         />
       </div>
-
       <!--right container-->
       <div class="text">
-        <h1>Marouane Guerouji</h1>
         <hr />
-        <h2 class="center">Welcome to my digital world</h2>
+        <h2>Welcome to my digital world</h2>
         <p class="center">
           As a recent graduate in computer science, I am eager to leverage my
           solid foundation in programming, problem-solving skills, and passion
@@ -74,7 +40,7 @@
         </p>
 
         <button id="button"><a href="./intro.html">ENTER</a></button>
-        <div>
+        <div style="display: block">
           <ul>
             <li>
               <h3><a href="./begin.html">Education and Certifications</a></h3>
@@ -86,6 +52,7 @@
             <li><h3>Projects</h3></li>
           </ul>
         </div>
+        <hr />
       </div>
     </div>
   </body>

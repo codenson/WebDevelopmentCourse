@@ -38,3 +38,8 @@ var qr_svg = qr.image(URL, { type: "png" });
  * Saves the QR-image to the current folder.
  */
 qr_svg.pipe(fs.createWriteStream(URL + ".png"));
+
+fs.writeFile("userInput.txt", URL, (err) => {
+  if (err) throw err;
+  console.log("The file has been saved!");
+});

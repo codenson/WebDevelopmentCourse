@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
 
 app.post("/register", (req, res) => {
   //Do something with the data
-  console.log(req.ip);
+  console.log(req.rawHeaders);
   res.sendStatus(201);
 });
 

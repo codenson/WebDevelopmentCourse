@@ -8,6 +8,7 @@ const app = express();
 const port = 3000;
 //the line of code below parses teh requests and make the data readable.
 app.use(bodyParser.urlencoded({ extended: true }));
+
 app.post("/submit", (req, res) => {
   console.log(req.body);
   res.send("ok");

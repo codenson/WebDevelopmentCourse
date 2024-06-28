@@ -1,0 +1,71 @@
+html {
+  background-color: whitesmoke;
+
+  font-family: "Overlock", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 15pt;
+}
+.menu {
+  display: flex;
+  gap: 1px;
+  height: 2rem;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* text-align: center; */
+  border: 1px solid rgb(163, 18, 18);
+}
+
+.menu-item {
+  color: whitesmoke;
+  flex: 1;
+  border: 1px solid black;
+  background-color: rgb(170, 24, 24);
+  height: 100%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font: 20px;
+}
+.bodyContainer {
+  display: grid;
+  background-color: aliceblue;
+  height: 100vh;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 0.5fr);
+}
+.grid {
+  grid: 1 2, 5;
+  background-color: rgb(242, 244, 237);
+}
+.content {
+  color: rgb(43, 38, 34);
+  background-color: rgb(223, 220, 220);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 10 solid black;
+}
+
+li {
+  list-style-type: none;
+}
+a {
+  color: rgb(29, 7, 7);
+  text-decoration: none;
+}
+.newPostCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+#title {
+  color: rgb(136, 200, 8);
+}
+.isolate {
+  flex: 1;
+  height: 10vh;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PostManagment</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <%- include("partials/header.ejs")%>
+    <!-- <div class="menu">
+      <div class="menu-item first">
+        <a href="mainMenu"> Main Menu</a>
+      </div>
+      <div class="menu-item second">
+        <a href="newPost">New Post</a>
+      </div>
+      <div class="menu-item third">Section</div>
+    </div>
+    <hr /> -->
+
+    <div class="newPostCenter">
+      <ul>
+        <li>
+          <div class="isolate">
+            <h1>New Post : Enter the name and the topic and the text :</h1>
+          </div>
+          <div class="isolate">
+            <form action="/submit" method="POST">
+              <input
+                type="text"
+                name="userName"
+                placeholder="UserName: "
+                required
+              />
+              <input type="text" name="topic" placeholder="topic" required />
+              <input type="text" name="content" placeholder="Text" required />
+              <input type="submit" value="Submit" />
+            </form>
+          </div>
+        </li>
+        <li>
+          <div class="isolate">
+            <h1>Update Post : Enter the name and the topic and the text :</h1>
+          </div>
+          <div class="isolate">
+            <form action="/update" method="POST">
+              <input
+                type="text"
+                name="userName"
+                placeholder="UserName: "
+                required
+              />
+              <input type="text" name="topic" placeholder="topic" required />
+              <input type="text" name="content" placeholder="Text" required />
+              <input type="submit" value="Submit" />
+            </form>
+          </div>
+        </li>
+        <li>
+          <div class="isolate">
+            <h1>Delete Post : Enter the name and the topic and the text :</h1>
+          </div>
+          <div class="isolate">
+            <form action="/delete" method="POST">
+              <input
+                type="text"
+                name="userName"
+                placeholder="UserName: "
+                required
+              />
+              <input type="text" name="topic" placeholder="topic" />
+              <input type="text" name="content" placeholder="Text" />
+              <input type="submit" value="Submit" />
+            </form>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

@@ -1,5 +1,6 @@
 import express from "express";
-import bodyParser from "body-parser";
+// import bodyParser, { json } from "body-parser";
+import bodyParser from 'body-parser';
 import fs from "fs";
 import path from "path";
 // import alert from 'alert';
@@ -9,6 +10,7 @@ import { writeFileSync } from "fs";
 /***These three lines of code set the current relative directory of the project */
 import { dirname } from "path";
 import { fileURLToPath } from "url";
+import { render } from "ejs";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 
@@ -102,13 +104,42 @@ app.post("/submit", (req, res) => {
     available: true,
     comments : [],
   };
-  const jsonData = JSON.stringify(data);
+
   const length = fs.readdirSync("jSon").length;
-  console.log("length before : " + length);
   let currentUser = length + 1;
-  //   let filePath = `jSon/user${currentUser}.json`;
-  let filePath = `jSon/${req.body.userName}.json`;
-  console.log(length);
+  //  let filePath = `jSon/${req.body.userName}.json`;
+  
+  writeFiles(`jSon/${req.body.userName}.json`,data ); 
+  let topicPath  = `topic/${req.body.userName}.json`; 
+
+  if (!fs.existsSync(topicPath)){
+    documentTopics(req.body.topic , req.body.userName);
+  }else {
+    fs.readFile(topicPath,'utf8',  (err, topicData) => {
+      if (err) {
+         console.log("ERROR! File does not exist "); 
+         return; 
+         }
+          let obj = JSON.parse(topicData);
+          obj.nameOfUser.push(req.body.userName); 
+           obj = JSON.stringify(obj);
+           writeFiles(topicPath, obj); 
+           fs.writeFileSync(`jSon/${req.body.userName}.json`, obj,'utf8'); 
+        }); 
+
+  }
+
+  var files = parseJSon();
+
+  res.render("list.ejs", { files });
+});
+/**
+ * helper funcition to write files into directories. 
+ * @param {h} filePath 
+ * @param {*} data 
+ */
+function writeFiles(filePath,data ){
+  const jsonData = JSON.stringify(data);
 
   try {
     fs.writeFileSync(filePath, jsonData);
@@ -116,10 +147,75 @@ app.post("/submit", (req, res) => {
   } catch (error) {
     console.error("Error writing JSON data to file:", error);
   }
+}
+/**create a new docuent to user's comments on topic */
+function documentTopics(userTopic , userName){
+  const data ={
+    topic : userTopic, 
+    nameOfUser : [], 
+  }; 
+  data.nameOfUser.push(userName);
+  let filePath = `topics/${userTopic}.json`;
 
-  var files = parseJSon();
+  writeFiles(filePath, data ); 
+}
+app.get("/postsByTopic", (req, res)=>{
+  let dir = "topics"; 
+  // let length = fs.readdirSync(path);
+  var files = parseJSon2(dir);
+  res.render("postsByTopic.ejs", {files}); 
+});
+function parseJSon2(dir) {
+  const files = fs.readdirSync(dir);
+  const jsonDataArray = [];
 
-  res.render("list.ejs", { files });
+  files.forEach((file) => {
+    const filePath = path.join(dir, file);
+    if (path.extname(filePath) === ".json") {
+      const fileData = fs.readFileSync(filePath, "utf8");
+      const jsonData = JSON.parse(fileData);
+      jsonDataArray.push(jsonData);
+    }
+  });
+
+  return jsonDataArray;
+}
+
+app.get("/commentPages", (req, res)=>{
+
+  const currentTopic = req.query.topic; // Access the 'topic' from the query parameter
+    console.log('Received topic:', currentTopic);
+
+  let dir  = "topics";
+    const length = fs.readdirSync("topics").length;
+    var f = `topics/${currentTopic}.json`; 
+    console.log("file Name : "+ f);
+
+  var myData  = fs.readFileSync(`topics/${currentTopic}.json`);
+  myData = JSON.parse(myData);
+  console.log(myData.nameOfUser);
+
+  var users = []; 
+  for (var i  = 0; i < myData.nameOfUser.length; i++){
+    let fileName  = `jSon/${myData.nameOfUser[i]}.json`;
+    if (fs.existsSync(fileName)){
+       const fileData = fs.readFileSync(fileName, "utf8");
+      const jsonData = JSON.parse(fileData);
+      users.push(jsonData);
+    }
+   
+
+
+  }
+
+
+
+
+// res.sendFile(temp); 
+ res.render("commentPage", {users});
+
+
+
 });
 
 app.get("/", (req, res) => {

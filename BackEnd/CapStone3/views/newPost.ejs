@@ -25,7 +25,7 @@
           <div class="isolate">
             <h1>New Post : Enter the name and the topic and the text :</h1>
           </div>
-          <div class="isolate">
+          <div class="isolate2">
             <form action="/submit" method="POST">
               <input
                 type="text"
@@ -33,9 +33,26 @@
                 placeholder="UserName: "
                 required
               />
-              <input type="text" name="topic" placeholder="topic" required />
+              <div class = "miniDiv">
+              <input type="text" name="topic" placeholder="Topic" required  list="topicOptions"/>
+              <datalist id = "topicOptions">
+              <div>
+                <option value ="Automotive"></option>
+                <option value ="Pets"></option>
+                <option value ="Music"></option>
+              </div>
+              </datalist>
+              </div>
               <input type="text" name="content" placeholder="Text" required />
+              <div class = "submitBtn">
+                <div class = "div1">
               <input type="submit" value="Submit" />
+              </div>
+               <!-- <div class = "div1"><input type="submit" value="Update" /></div>
+                <div class = "div1"><input type="submit" value="Delete" /></div> -->
+               
+                
+                </div>
             </form>
           </div>
         </li>
@@ -51,8 +68,8 @@
                 placeholder="UserName: "
                 required
               />
-              <input type="text" name="topic" placeholder="topic" required />
-              <input type="text" name="content" placeholder="Text" required />
+              <input type="text" name="topic" placeholder="topic"  />
+              <input type="text" name="content" placeholder="Text"  />
               <input type="submit" value="Submit" />
             </form>
           </div>
@@ -77,5 +94,17 @@
         </li>
       </ul>
     </div>
+    <script>
+      function miniMenu(){
+        // var popup  = document.querySelector("miniDiv"); 
+        // popup.
+         const miniElement = document.querySelector(".miniDiv");
+  
+         const newContainerHTML = '<div id="new-container" style="background-color: yellow;">Automotive</div><div>Animals</div>';
+        //  miniElement.style.display  = "none";
+
+          miniElement.insertAdjacentHTML('afterend', newContainerHTML);
+      }
+    </script>
   </body>
 </html>

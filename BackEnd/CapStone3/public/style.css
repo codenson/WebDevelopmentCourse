@@ -62,10 +62,50 @@ a {
   text-align: center;
   flex-direction: column;
 }
+.submitBtn{
+  display: flex;
+
+flex-direction: row;
+}
+.div1{
+  flex:1; 
+}
 #title {
   color: rgb(136, 200, 8);
 }
 .isolate {
-  flex: 1;
-  height: 10vh;
+  /* display: flex; */
+  /* flex: 1; */
+  /* height: 10vh; */
+  /* display: flex;  */
+}
+/* .isolate2{
+  flex:1; 
+  flex-direction: row;
+  flex-direction: row-reverse;
+} */
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  background-color:rgb(223, 220, 220);
+  border:  hidden;
+ 
+}
+@media only screen and (max-width: 950px){
+  html{
+    font-size: 14px;
+  }
+
+}
+@media only screen and (max-width: 680px) {
+
+  html{
+    font-size: 8pt ;
+  }
+  .isolate{
+    
+    display: inline-flex;
+  }
 }

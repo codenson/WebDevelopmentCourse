@@ -7,17 +7,9 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+ <div class = "cont">
     <%- include("partials/header.ejs")%>
-    <!-- <div class="menu">
-      <div class="menu-item first">
-        <a href="mainMenu"> Main Menu</a>
-      </div>
-      <div class="menu-item second">
-        <a href="newPost">New Post</a>
-      </div>
-      <div class="menu-item third">Section</div>
-    </div>
-    <hr /> -->
+ 
 
     <div class="newPostCenter">
       <ul>
@@ -68,8 +60,9 @@
                 placeholder="UserName: "
                 required
               />
-              <input type="text" name="topic" placeholder="topic"  />
-              <input type="text" name="content" placeholder="Text"  />
+             
+              <input type="text" name="content" placeholder="Text" required />
+               <input type="text" name="threadId" placeholder="ThreadId" required/>
               <input type="submit" value="Submit" />
             </form>
           </div>
@@ -86,8 +79,7 @@
                 placeholder="UserName: "
                 required
               />
-              <input type="text" name="topic" placeholder="topic" />
-              <input type="text" name="content" placeholder="Text" />
+                 <input type="text" name="threadId" placeholder="ThreadId" required />
               <input type="submit" value="Submit" />
             </form>
           </div>
@@ -106,5 +98,6 @@
           miniElement.insertAdjacentHTML('afterend', newContainerHTML);
       }
     </script>
+    </div>
   </body>
 </html>

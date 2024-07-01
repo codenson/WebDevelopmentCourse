@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+ 
 </head>
 <body>
+      <%- include("partials/header.ejs")%>
 
-    <ul>
+    <!-- <ul>
    <% for (let i = 0; i < users.length; i++) { %>
         <li>
             <h1><%= users[i].userName %></h1>
@@ -16,7 +18,26 @@
             </div>
         </li>
    <% } %>
-</ul>
+</ul> -->
+
+
+<h1><%= currentTopic%>:</h1>
+<hr>
+<div class = "cont">
+
+    <% for (let i = 0; i < users.length; i++) { %>
+        <div >
+    <li>
+        
+      <h2 id="title"><b><%= users[i].userName%></b>: (#<%= users[i].threadId%>)</h2>
+      <div class="content">
+        <h3 class = " mydiv" ><%= users[i].text %></h3>
+      </div>
+    </li>
+    </div>
+
+    <% } %>
+</div>
 
 
 

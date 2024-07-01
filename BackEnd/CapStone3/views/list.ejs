@@ -8,16 +8,20 @@
   </head>
   <body>
     <%- include ('partials/header.ejs') %>
-    <h1>The list of users:</h1>
+    <div class = "cont">
+    <h1>List of All Posts:</h1>
 
     <% for (let i = 0; i < files.length; i++) { %>
+      <div>
     <li>
-      <h2 id="title"><b><%= files[i].userName%></b></h2>
+      <h2 id="title"><b><%= files[i].userName%></b>: (#<%= files[i].threadId%>)</h2>
       <div class="content">
-        <h3><%= files[i].text %></h3>
+        <h3 class = " mydiv"><%= files[i].text %></h3>
       </div>
     </li>
+    </div>
 
     <% } %>
+    </>
   </body>
 </html>

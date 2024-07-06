@@ -1,6 +1,11 @@
 import express from "express";
 // import bodyParser, { json } from "body-parser";
 import bodyParser from 'body-parser';
+// import bodyParser, { json } from 'body-parser';
+
+
+
+
 import fs from "fs";
 import path from "path";
 // import alert from 'alert';
@@ -65,57 +70,12 @@ app.post("/delete", (req, res) => {
     fs.writeFileSync(`users/${currUser.userName}.json`,JSON.stringify(currUser),'utf8');
       var files = parseJSon();
   res.render("list", { files });
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-  //     var currentUser  = JSON.parse(fs.readFileSync(`users/${req.body.userName}.json`));
-  //     const threadId = Number(req.body.threadId);
-
-
-  //      var index = currentUser.activity.findIndex(item2 => item2 === threadId);
-  //     // var temp =  currentUser.activity.findIndex(req.body.threadId);
-
-  //     var arr = currentUser.activity; 
-  //    const val  = (element) => element === threadId ;
-
-  //    console.log("Data : " + arr + " looing for : "+ threadId);
-
-  //     console.log("index : "+( arr.findIndex(val)));
-      
-  //   if (index !== -1) {
-  //     currentUser.activity.splice(index, 1);
-  //   }
-  //   console.log(currentUser.activity); 
-  //   fs.writeFileSync(`users/${currentUser.userName}.json`, JSON.stringify(currentUser),'utf8'); 
-
-  // var files = parseJSon();
-  // res.render("list", { files });
-  // return ; 
-
   }
   else {
       res.render("newPost");
 
   }
 
-
-  
-
-   
-  
-
-  // let filePath = path.join(dirPath, userName);
-  // //   let filePath = path.join(dirPath, `${req.body.userName}.json`);
-  // console.log("File path  : " + filePath);
-
-  // if (fs.existsSync(filePath)) {
-  //   console.log("Delete");
-  //   fs.unlinkSync(filePath);
-  // } else {
-  //   console.log(`File ${filePath} does not exist`);
-  // }
-
-  // var files = parseJSon();
-  // res.render("list", { files });
 });
 
 app.post("/update", (req, res) => {
@@ -130,51 +90,12 @@ if (fs.existsSync(path)){
 
 }
 
-// fs.readFile(path,'utf8',  (err, data) => {
-//   if (err) {
-//     console.log("ERROR! File does not exist "); 
-//    return; 
-//   }
-//   let obj = JSON.parse(data);
-//   obj.content =req.body.topic;  
-//   console.log("text : "+req.body.text );
-//    obj.text =req.body.content; 
-//   obj = JSON.stringify(obj);
-//   fs.writeFileSync(`jSon/${req.body.userName}.json`, obj,'utf8'); 
-
-//   // console.log("file was parsed and updated and added to the dir" + data);
-// });
 
 let files  = parseJSon();
   res.render("list.ejs",{files});
 
 });
 
-
-
-// app.post("/update", (req, res) => {
-// const path = `jSon/${req.body.userName}.json`;
-// // console.log("file Name : "+ path);
-
-// fs.readFile(path,'utf8',  (err, data) => {
-//   if (err) {
-//     console.log("ERROR! File does not exist "); 
-//    return; 
-//   }
-//   let obj = JSON.parse(data);
-//   obj.content =req.body.topic;  
-//   console.log("text : "+req.body.text );
-//    obj.text =req.body.content; 
-//   obj = JSON.stringify(obj);
-//   fs.writeFileSync(`jSon/${req.body.userName}.json`, obj,'utf8'); 
-
-//   // console.log("file was parsed and updated and added to the dir" + data);
-// });
-
-// let files  = parseJSon();
-//   res.render("list.ejs",{files});
-
-// });
 
 function parseJSon() {
   const dir = "threads";
@@ -194,15 +115,7 @@ function parseJSon() {
 }
 
 app.post("/submit", (req, res) => {
-  console.log("here");
-  // const data = {
-  //   userName: req.body.userName,
-  //   content: req.body.topic,
-  //   text: req.body.content,
-  //   available: true,
-  //   comments : [],
-  //   activity : [], 
-  // };
+
   var userData = {}; 
 
   var threadRandomId = Math.floor(Math.random() * 100000);
@@ -334,6 +247,112 @@ app.get("/commentPages", (req, res)=>{
  res.render("commentPage", {users,currentTopic });
 
 
+
+});
+app.get("/threadCommentList" , (req, res)=>{
+  var filePath  = `threads/${req.query.threadId}.json`; 
+
+  if (fs.existsSync(filePath)){
+    var files  = []; 
+  const currThreadId = req.query.threadId; 
+
+  var length  = fs.readdirSync("threads").length; 
+    // console.log("Here -------------------currThreadId: "+ currThreadId+ " len : "+ length);
+
+  // var currThread = JSON.parse(fs.readFileSync(filePath)); 
+   var currThread = JSON.parse(fs.readFileSync(filePath)); 
+
+  for (let i =  0; i < currThread.comments.length; i++){
+    var subThreadPath  = `threads/${currThread.comments[i]}.json`; 
+    if(fs.existsSync(subThreadPath)){
+      files.push(JSON.parse(fs.readFileSync(subThreadPath))); 
+
+
+    }
+
+
+  }
+  console.log("files: " + files);
+    console.log("currfile: " + currThread.userName);
+
+  
+
+  res.render("threadCommentList.ejs", {files, currThread});
+  return ; 
+}
+
+res.redirect("oklll"); 
+
+
+
+
+});
+
+app.get("/threadComment", (req, res)=>{
+  var threadRandomId = Math.floor(Math.random() * 100000);
+  var oldThreadNum = req.query.threadNumber;
+
+  console.log("myy ---------------thread number:: : "+ (oldThreadNum));
+    console.log("myy ---------------thread number:: : "+ (req.query.userName));
+
+  while (fs.existsSync(`threads/${threadRandomId}.json`)){
+    threadRandomId = Math.floor(Math.random() * 100000);
+
+  }
+  console.log();
+
+    const thread  = {
+    userName : req.query.userName, 
+    threadId: threadRandomId,
+    topic : req.query.topic,
+    text: req.query.content,
+    comments : [],
+
+  }; 
+    console.log("my User name : " + thread);
+   fs.writeFileSync(`threads/${threadRandomId}.json`, JSON.stringify(thread), 'utf8'); 
+
+   ////////////////////////////////////////////////////////////////
+ var oldFilePath = `threads/${oldThreadNum}.json`; 
+ console.log("path : " + oldFilePath + "file exists : "+(fs.existsSync(oldFilePath)));
+   if (fs.existsSync(oldFilePath)){
+    // var oldFilePath = `threads/${oldThreadNum}.json`; 
+    var oldUser  = JSON.parse(fs.readFileSync(oldFilePath));
+    console.log("parsed file : "+ oldUser.userName);
+    oldUser.comments.push(threadRandomId); 
+    console.log(oldUser.comments); 
+    fs.writeFileSync(oldFilePath, JSON.stringify(oldUser), 'utf-8');
+
+
+
+   }
+   console.log("old : " +oldThreadNum);
+   ///////////////////////////////////////////////////
+
+  if (fs.existsSync(`threads/${oldThreadNum}.json`)){
+  var files  = [];
+    var currThread = JSON.parse(fs.readFileSync(`threads/${oldThreadNum}.json`)); 
+    console.log('Me Json : '+currThread);
+    // currThread.comments.push(thread); 
+
+ for (let i =  0; i < currThread.comments.length; i++){
+
+  
+    var subThreadPath  = `threads/${currThread.comments[i]}.json`; 
+    console.log("num : "+ subThreadPath);
+
+    if(fs.existsSync(subThreadPath)){
+      files.push(JSON.parse(fs.readFileSync(subThreadPath))); 
+  
+          res.render("threadCommentList.ejs", {files, currThread});
+          
+
+    }
+  }
+}
+
+ 
+      res.send("OK");
 
 });
 

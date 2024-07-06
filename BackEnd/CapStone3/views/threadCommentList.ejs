@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Initially hide the pop-up menu */
+        .popUpInputmenu {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <%- include("partials/header.ejs") %>
+    <div>
+        <div id="title">
+            <h1>Thread: <%= currThread.userName %></h1>
+        </div>
+        <div class="threadText">
+            <h2><%= currThread.text %></h2>
+        </div>
+        <div>
+            <button id="threadbtn" onclick="show(<%= currThread.threadId %>)">Reply</button>
+        </div>
+               <div id="popUpInputmenu-<%= currThread.threadId %>" class="popUpInputmenu">
+                            <form action="threadComment" method="GET">
+                                <input type="text" name="userName" placeholder="UserName: " required />
+                                <input type="text" name="threadNumber" value="<%= currThread.threadId %>" />
+                                <input type="text" id="topic" name="topic" value="<%= currThread.topic %>" placeholder="Topic" required />
+                                <input type="text" name="content" placeholder="Content" required />
+                                <input type="submit" value="Submit" />
+                            </form>
+                </div>
+
+        
+    </div>
+    <hr>
+    <% if (files.length === 0) { %>
+        <!-- <div>
+            <button id="threadbtn" onclick="show(<%= currThread.threadId %>)">Reply</button>
+        </div> -->
+    <% } else { 
+        for (let i = 0; i < files.length; i++) { %>
+            <div class="threadsList">
+                <li>
+                    <h2 id="title"><b><%= files[i].userName%><a href="threadCommentList?threadId=<%= encodeURIComponent(files[i].threadId)%>"></b>: %>(#<%= files[i].threadId%>)</a></h2>
+                 
+                    <div class="content">
+                        <h3 class="mydiv"><%= files[i].text %></h3>
+
+                        <div>
+                            <button id="threadbtn" onclick="show(<%= files[i].threadId %>)">Reply</button>
+                        </div>
+
+                        <div id="popUpInputmenu-<%= files[i].threadId %>" class="popUpInputmenu">
+                            <form action="threadComment" method="GET">
+                                <input type="text" name="userName" placeholder="UserName: " required />
+                                <input type="text" name="threadNumber" value="<%= files[i].threadId %>" />
+                                <input type="text" id="topic" name="topic" value="<%= currThread.topic %>" placeholder="Topic" required />
+                                <input type="text" name="content" placeholder="Content" required />
+                                <input type="submit" value="Submit" />
+                            </form>
+                        </div>
+                    </div>
+                </li>
+            </div>
+    <% }} %>
+
+    <script>
+        var active  = 0; 
+        function show(threadId) {
+             var element = document.querySelector("#popUpInputmenu-" + threadId);
+            if (active === 0){
+            
+            var element = document.querySelector("#popUpInputmenu-" + threadId);
+            element.toggleAttribute
+            element.style.display = "block";
+            active = 1; 
+            }
+            else {
+                element.style.display = "none";
+                active = 0; 
+
+            }
+
+
+        }
+    </script>
+</body>
+</html>

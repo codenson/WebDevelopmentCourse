@@ -29,7 +29,7 @@
         <div >
     <li>
         
-      <h2 id="title"><b><%= users[i].userName%></b>: (#<%= users[i].threadId%>)</h2>
+      <h2 id="title"><b><%= users[i].userName%></b>: <a href="/threadCommentList?threadId=<%= encodeURIComponent(users[i].threadId) %>">(#<%= users[i].threadId%>)</a></h2></h2>
       <div class="content">
         <h3 class = " mydiv" ><%= users[i].text %></h3>
       </div>

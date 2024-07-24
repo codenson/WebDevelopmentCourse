@@ -69,7 +69,7 @@ app.post("/delete-secret", async (req, res) => {
   const searchId = req.body.id;
   try {
     const result = await axios.delete(API_URL + "/secrets/" + searchId, config);
-    res.render("index.ejs", { content: JSON.stringify(result.data) });
+    res.render("index.ejs", { content: result.data });
   } catch (error) {
     res.render("index.ejs", { content: JSON.stringify(error.response.data) });
   }

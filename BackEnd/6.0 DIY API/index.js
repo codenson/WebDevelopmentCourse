@@ -55,14 +55,104 @@ app.get("/filter", (req, res) => {
 });
 
 //4. POST a new joke
+app.post("/jokes", (req, res) => {
+  var newId = jokes.length + 1;
+  var newJoke = {
+
+    id: newId,
+    jokeText: req.body.text,
+    jokeType: req.body.type,
+
+  };
+  jokes.push(newJoke);
+  console.log(jokes.slice(-1));
+  res.json(newJoke);
+
+
+});
 
 //5. PUT a joke
+app.put("/jokes/:id", (req, res) => {
+
+  var tempId = parseInt(req.params.id);
+
+  try {
+
+    if (tempId < 0 || tempId >= jokes.length) {
+      throw new Error("invalid IDddd");
+    }
+    console.log(tempId);
+    const newJoke = {
+      id: tempId,
+      jokeText: req.body.text,
+      jokeType: req.body.type,
+
+    };
+    var index = jokes.findIndex((jokes) => jokes.id === tempId);
+
+    jokes[index] = newJoke;
+    res.json(jokes[index]);
+
+  } catch (error) {
+    res.status(404).send("404 Not Found");
+  }
+});
 
 //6. PATCH a joke
+app.patch("/jokes/:id", (req, res) => {
+  var temp = parseInt(req.params.id);
+
+  var index = jokes.findIndex((jokes) => jokes.id === temp);
+
+  if (req.query.text.length > 0) {
+    jokes[index].jokeText = req.query.text;
+  }
+
+  if (req.query.type !== undefined) {
+    jokes[index].jokeType = req.query.type;
+  }
+  res.json(jokes[index]);
+
+});
 
 //7. DELETE Specific joke
+app.delete("/jokes/:id", (req, res) => {
+
+  var tempId = parseInt(req.params.id);
+
+  try {
+    var index = jokes.findIndex((jokes) => jokes.id === tempId);
+
+    if (index < 0) {
+      throw new Error("Invalid ID 404 Not Found");
+    }
+    jokes.splice(index, 1);
+    res.sendStatus(200);
+
+  } catch (error) {
+    res.status(404).send("404 Not Found");
+  }
+
+
+});
 
 //8. DELETE All jokes
+app.delete("/all", (req, res) => {
+
+  if (req.query.key !== masterKey || jokes.length === 0) {
+    res.sendStatus(401);
+  }
+
+  if (req.query.key === masterKey) {
+    if (jokes.length > 0) {
+
+      jokes = [];
+      res.sendStatus(200);
+    }
+  }
+
+});
+
 
 app.listen(port, () => {
   console.log(`Successfully started server on port ${port}.`);
